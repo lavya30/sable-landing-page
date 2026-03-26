@@ -74,7 +74,6 @@ export default function DownloadCounter() {
         </div>
       </div>
 
-      <div className="counter-pulse" aria-hidden="true" />
     </motion.div>
   );
 }
