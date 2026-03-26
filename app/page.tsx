@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import DownloadCounter from "./components/DownloadCounter";
 import {
   Shield,
   PenTool,
@@ -127,6 +128,13 @@ const features = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [downloadTracked, setDownloadTracked] = useState(false);
+
+  const trackDownload = useCallback(() => {
+    if (downloadTracked) return;
+    setDownloadTracked(true);
+    fetch("/api/downloads", { method: "POST" }).catch(() => {});
+  }, [downloadTracked]);
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
@@ -208,7 +216,12 @@ export default function Home() {
             device. Your focus stays unbroken.
           </motion.p>
           <motion.div className="hero-actions" variants={fadeUp} custom={2}>
-            <a href="#download" className="btn-primary" id="hero-download-btn">
+            <a
+              href="https://github.com/lavya30/Sable/releases/download/v0.1.0/Sable.Setup.0.1.0.exe"
+              className="btn-primary"
+              id="hero-download-btn"
+              onClick={trackDownload}
+            >
               <Download size={18} />
               Download for Windows
             </a>
@@ -222,6 +235,9 @@ export default function Home() {
               <Github size={18} />
               View on GitHub
             </a>
+          </motion.div>
+          <motion.div variants={fadeUp} custom={3}>
+            <DownloadCounter />
           </motion.div>
         </motion.div>
 
@@ -452,11 +468,16 @@ export default function Home() {
             Free, open-source, and yours forever. No account needed.
           </motion.p>
           <motion.div className="cta-actions" variants={fadeUp} custom={2}>
-            <a href="#" className="btn-primary btn-lg" id="cta-download-btn">
+            <a
+              href="https://github.com/lavya30/Sable/releases/download/v0.1.0/Sable.Setup.0.1.0.exe"
+              className="btn-primary btn-lg"
+              id="cta-download-btn"
+              onClick={trackDownload}
+            >
               <Download size={20} />
               Download for Windows
             </a>
-            <span className="cta-meta">v0.1.0 · Windows 10/11 · 85MB</span>
+            <span className="cta-meta">v0.1.0 · Windows 10/11</span>
           </motion.div>
           <motion.a
             href="https://github.com/lavya30/Sable"
