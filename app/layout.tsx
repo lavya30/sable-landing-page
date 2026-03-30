@@ -54,17 +54,17 @@ export default function RootLayout({
       className={`${cormorant.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
-        {googleTagId ? (
+        {"G-RSLKJQQWTQ" ? (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=G-RSLKJQQWTQ`}
               strategy="afterInteractive"
             />
             <Script id="google-tag-init" strategy="afterInteractive">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${googleTagId}');`}
+gtag('config', 'G-RSLKJQQWTQ');`}
             </Script>
           </>
         ) : null}
