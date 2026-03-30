@@ -24,8 +24,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const googleTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://sable-app.tech"),
   title: "Sable — Write with Intention",
@@ -54,17 +52,17 @@ export default function RootLayout({
       className={`${cormorant.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
     >
       <head>
-        {googleTagId ? (
+        {process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ? (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_ID}`}
               strategy="afterInteractive"
             />
             <Script id="google-tag-init" strategy="afterInteractive">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${googleTagId}');`}
+gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_TAG_ID}');`}
             </Script>
           </>
         ) : null}
