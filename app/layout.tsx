@@ -34,9 +34,20 @@ export const metadata: Metadata = {
     title: "Sable — Write with Intention",
     description: "A beautiful, local-first writing app.",
     siteName: "Sable",
+    images: [
+      {
+        url: "/icon.png",
+        width: 1200,
+        height: 1200,
+        alt: "Sable App Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Sable — Write with Intention",
+    description: "A beautiful, local-first writing app.",
+    images: ["/icon.png"],
   },
 };
 
