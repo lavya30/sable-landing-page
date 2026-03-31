@@ -68,6 +68,13 @@ gtag('config', 'G-RSLKJQQWTQ');`}
             </Script>
           </>
         ) : null}
+        {/* Cloudflare Web Analytics */}
+        <Script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "46b4e71e5cb34719bf44b537e2c83983"}'
+          strategy="lazyOnload"
+        />
       </head>
       <body>{children}</body>
     </html>
